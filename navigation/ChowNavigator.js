@@ -1,4 +1,5 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation-stack'
+import { createStackNavigator } from 'react-navigation-stack'
+import { createAppContainer } from 'react-navigation'
 import Categories from '../screens/Categories'
 import MealRecipe from '../screens/MealRecipe';
 import Meals from '../screens/Meals'

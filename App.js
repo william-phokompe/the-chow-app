@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import ChowNavigator from './navigation/ChowNavigator'
 
 const fetchFonts = (_) => {
   return Font.loadAsync({
@@ -27,10 +28,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={{fontFamily: 'bebas-neue-reg'}}>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ChowNavigator />
   );
 }
 
