@@ -3,20 +3,27 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import * as Font from "expo-font";
-import { AppLoading } from "expo-app-loading";
+import AppLoading from "expo-app-loading";
 
-const fetchFonts = _ => {
+const fetchFonts = (_) => {
   return Font.loadAsync({
-    'bebas-neue-reg': require('./assets/fonts/Bebas-Neue-Regular.ttf'),
-    'bebas-neue-bold': require('./assets/fonts/Bebas-Neue-Bold.otf')
+    "bebas-neue-reg": require("./assets/fonts/Bebas-Neue-Regular.ttf"),
+    "bebas-neue-bold": require("./assets/fonts/Bebas-Neue-Bold.otf"),
   });
-}
+};
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   if (!fontLoaded) {
-    return <AppLoading startAsync={fetchFonts} onFinish={_ => setFontLoaded(true)}/>
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={(_) => setFontLoaded(true)}
+        onError={console.warn}
+      />
+    );
+    
   }
 
   return (
