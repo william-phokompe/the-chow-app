@@ -3,10 +3,18 @@ import { View, Text, StyleSheet } from 'react-native'
 
 const Categories = () => {
     return (
-        <div>
-            
-        </div>
+        <View>
+
+        </View>
     );
 }
+
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})
 
 export default Categories;
