@@ -4,5 +4,6 @@ import Meals from '../screens/Meals'
 
 createStackNavigator({
     Category: Categories,
-    Meal: Meals
+    Meal: Meals,
+    
 });
