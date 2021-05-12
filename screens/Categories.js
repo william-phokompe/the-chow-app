@@ -1,29 +1,22 @@
 import React from "react";
-import { enableScreens } from 'react-native-screens';
-import {
-  StyleSheet,
-  FlatList,
-  View,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { enableScreens } from "react-native-screens";
+import { StyleSheet, FlatList } from "react-native";
+
 import { CATEGORIES } from "../data/mock-data";
+import GridTiles from "../components/GridTiles";
 
 enableScreens();
 
 const Categories = (props) => {
   const renderGridItem = (itemData) => {
     return (
-      <TouchableOpacity
-        style={styles.grid}
-        onPress={(_) => {
+      <GridTiles
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onTap={(_) => {
           props.navigation.navigate("Chow", { categoryId: itemData.item.id });
         }}
-      >
-        <View>
-          <Text>{itemData.item.title}</Text>
-        </View>
-      </TouchableOpacity>
+      />
     );
   };
 
@@ -46,12 +39,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-
-  grid: {
-    flex: 1,
-    margin: 15,
-    height: 150,
   },
 });
 
