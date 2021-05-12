@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import { CATEGORIES, MEALS } from "../data/mock-data";
+import MealItem from '../components/MealItem'
 
 const Chow = (props) => {
   const categoryId = props.navigation.getParam("categoryId");
@@ -10,11 +11,14 @@ const Chow = (props) => {
     (meal) => meal.categoryIds.indexOf(categoryId) >= 0
   );
 
+  const loadDetail = _ => {
+
+  }
+
   const renderMealItem = (itemData) => {
+    let meals = itemData.item;
     return (
-      <View>
-        <Text>{itemData.item.title}</Text>
-      </View>
+      <MealItem selectedCategory={meals} onSelect={loadDetail}/>
     );
   };
 
@@ -24,6 +28,7 @@ const Chow = (props) => {
         keyExtractor={(item, index) => item.id}
         data={displayedMeals}
         renderItem={renderMealItem}
+        style={{ width: '100%' }}
       />
     </View>
   );
@@ -45,6 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    padding: 5
   },
 });
 

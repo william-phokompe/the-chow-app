@@ -25,7 +25,7 @@ const ChowNavigator = createStackNavigator(
         backgroundColor: Platform.OS === "android" ? Colors.primary : "",
       },
       headerTintColor: Platform.OS === "android" ? "white" : Colors.iosPrimary,
-      headerBackTitle: "A Screen",
+      // headerBackTitle: "A Screen",
     },
   }
 );

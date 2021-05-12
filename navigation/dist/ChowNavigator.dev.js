@@ -35,8 +35,8 @@ var ChowNavigator = (0, _reactNavigationStack.createStackNavigator)({
     headerStyle: {
       backgroundColor: _reactNative.Platform.OS === "android" ? _Colors["default"].primary : ""
     },
-    headerTintColor: _reactNative.Platform.OS === "android" ? "white" : _Colors["default"].iosPrimary,
-    headerBackTitle: "A Screen"
+    headerTintColor: _reactNative.Platform.OS === "android" ? "white" : _Colors["default"].iosPrimary // headerBackTitle: "A Screen",
+
   }
 });
 
