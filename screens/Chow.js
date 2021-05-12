@@ -11,14 +11,12 @@ const Chow = (props) => {
     (meal) => meal.categoryIds.indexOf(categoryId) >= 0
   );
 
-  const loadDetail = _ => {
-
-  }
-
   const renderMealItem = (itemData) => {
     let meals = itemData.item;
     return (
-      <MealItem selectedCategory={meals} onSelect={loadDetail}/>
+      <MealItem selectedCategory={meals} onSelect={_ => {
+        props.navigation.navigate("Recipe", {chowId: meals.id})
+      }}/>
     );
   };
 

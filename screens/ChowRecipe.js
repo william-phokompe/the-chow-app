@@ -1,10 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native'
 
-const ChowRecipe = () => {
+import {MEALS} from '../data/mock-data';
+
+const ChowRecipe = (props) => {
+    const chowId = props.navigation.getParam("chowId");
+
+    const selectedChow = MEALS.find(meal => meal.id === chowId)
+
     return (
         <View style={styles.screen}>
-            <Text>This is the recipe</Text>
+            <Text>{selectedChow.title}</Text>
         </View>
     );
 }

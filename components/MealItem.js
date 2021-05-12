@@ -15,8 +15,7 @@ const MealItem = (props) => {
   if (Platform.OS === "android" && Platform.Version >= 21) {
     TouchableComponent = TouchableNativeFeedback;
   }
-
-  console.log(props.selectedCategory.imageUrl);
+  
   return (
     <View style={styles.mealItem}>
       <TouchableComponent onPress={props.onSelect}>
