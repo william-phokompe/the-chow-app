@@ -35,6 +35,10 @@ const Categories = (props) => {
   );
 };
 
+Categories.navigationOptions = {
+  headerTitle: 'Meal Categories'
+}
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
