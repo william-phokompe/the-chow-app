@@ -5,10 +5,10 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Platform
+  Platform,
 } from "react-native";
 import { CATEGORIES } from "../data/mock-data";
-import Colors from '../constants/Colors'
+import Colors from "../constants/Colors";
 
 const Categories = (props) => {
   const renderGridItem = (itemData) => {
@@ -16,7 +16,7 @@ const Categories = (props) => {
       <TouchableOpacity
         style={styles.grid}
         onPress={(_) => {
-          props.navigation.navigate("Meals");
+          props.navigation.navigate("Meals", { categoryId: itemData.item.id });
         }}
       >
         <View>
@@ -37,12 +37,12 @@ const Categories = (props) => {
 };
 
 Categories.navigationOptions = {
-  headerTitle: 'Meal Categories',
+  headerTitle: "Meal Categories",
   headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
+    backgroundColor: Platform.OS === "android" ? Colors.primary : "",
   },
-  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.iosPrimary
-}
+  headerTintColor: Platform.OS === "android" ? "white" : Colors.iosPrimary,
+};
 
 const styles = StyleSheet.create({
   screen: {
