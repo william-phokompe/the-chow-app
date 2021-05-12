@@ -15,6 +15,14 @@ const ChowRecipe = (props) => {
     );
 }
 
+ChowRecipe.navigationOptions = (navigationData) => {
+    const mealId = navigationData.navigation.getParam("chowId");
+    const selectedMeal = MEALS.find(meal => meal.id === mealId)
+    return {
+        headerTitle: selectedMeal.title
+    }
+}
+
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
