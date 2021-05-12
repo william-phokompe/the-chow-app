@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { CATEGORIES } from "../data/mock-data";
+import Colors from '../constants/Colors'
 
 const Categories = (props) => {
   const renderGridItem = (itemData) => {
