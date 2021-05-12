@@ -16,7 +16,7 @@ const Categories = (props) => {
       <TouchableOpacity
         style={styles.grid}
         onPress={(_) => {
-          props.navigation.navigate("Meals", { categoryId: itemData.item.id });
+          props.navigation.navigate("Chow", { categoryId: itemData.item.id });
         }}
       >
         <View>
@@ -37,11 +37,7 @@ const Categories = (props) => {
 };
 
 Categories.navigationOptions = {
-  headerTitle: "Meal Categories",
-  headerStyle: {
-    backgroundColor: Platform.OS === "android" ? Colors.primary : "",
-  },
-  headerTintColor: Platform.OS === "android" ? "white" : Colors.iosPrimary,
+  headerTitle: "Chow Categories",
 };
 
 const styles = StyleSheet.create({
