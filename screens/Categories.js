@@ -1,14 +1,15 @@
 import React from "react";
+import { enableScreens } from 'react-native-screens';
 import {
   StyleSheet,
   FlatList,
   View,
   Text,
   TouchableOpacity,
-  Platform,
 } from "react-native";
 import { CATEGORIES } from "../data/mock-data";
-import Colors from "../constants/Colors";
+
+enableScreens();
 
 const Categories = (props) => {
   const renderGridItem = (itemData) => {
