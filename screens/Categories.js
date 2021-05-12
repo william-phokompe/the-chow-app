@@ -5,6 +5,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  Platform
 } from "react-native";
 import { CATEGORIES } from "../data/mock-data";
 import Colors from '../constants/Colors'
@@ -38,8 +39,9 @@ const Categories = (props) => {
 Categories.navigationOptions = {
   headerTitle: 'Meal Categories',
   headerStyle: {
-    backgroundColor: Colors.primary
-  }
+    backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
+  },
+  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.iosPrimary
 }
 
 const styles = StyleSheet.create({
