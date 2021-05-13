@@ -1,12 +1,14 @@
 import { Platform } from "react-native";
 
 import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer } from "react-navigation";
 
 import Categories from "../screens/Categories";
 import ChowRecipe from "../screens/ChowRecipe";
 import Chow from "../screens/Chow";
 import Colors from "../constants/Colors";
+import Favorites from '../screens/Favorites'
 
 const ChowNavigator = createStackNavigator(
   {
@@ -30,4 +32,9 @@ const ChowNavigator = createStackNavigator(
   }
 );
 
-export default createAppContainer(ChowNavigator);
+const FavoriteChowNavigator = createBottomTabNavigator({
+  Meals: ChowNavigator,
+  Favorites: Favorites
+});
+
+export default createAppContainer(FavoriteChowNavigator);

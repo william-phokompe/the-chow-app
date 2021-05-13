@@ -26,7 +26,7 @@ ChowRecipe.navigationOptions = (navigationData) => {
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Favorite"
-          iconName="ios-star"
+          iconName="ios-star-outline"
           onPress={(_) => console.log("mark as fave")}
         />
       </HeaderButtons>
