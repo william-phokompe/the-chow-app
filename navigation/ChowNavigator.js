@@ -7,11 +7,11 @@ import { createAppContainer } from "react-navigation";
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
-import Categories from "../screens/Categories";
-import ChowRecipe from "../screens/ChowRecipe";
-import Chow from "../screens/Chow";
+import Categories from "../components/screens/Categories";
+import ChowRecipe from "../components/screens/ChowRecipe";
+import Chow from "../components/screens/Chow";
 import Colors from "../constants/Colors";
-import Favorites from "../screens/Favorites";
+import Favorites from "../components/screens/Favorites";
 
 const ChowNavigator = createStackNavigator(
   {
