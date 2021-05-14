@@ -1,14 +1,16 @@
+import React from "react";
 import { Platform } from "react-native";
 
 import { createStackNavigator } from "react-navigation-stack";
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createAppContainer } from "react-navigation";
+import { Ionicons } from "@expo/vector-icons";
 
 import Categories from "../screens/Categories";
 import ChowRecipe from "../screens/ChowRecipe";
 import Chow from "../screens/Chow";
 import Colors from "../constants/Colors";
-import Favorites from '../screens/Favorites'
+import Favorites from "../screens/Favorites";
 
 const ChowNavigator = createStackNavigator(
   {
@@ -32,9 +34,38 @@ const ChowNavigator = createStackNavigator(
   }
 );
 
-const FavoriteChowNavigator = createBottomTabNavigator({
-  Meals: ChowNavigator,
-  Favorites: Favorites
-});
+const FavoriteChowNavigator = createBottomTabNavigator(
+  {
+    Meals: {
+      screen: ChowNavigator,
+      navigationOptions: {
+        tabBarIcon: (tabInfo) => {
+          return (
+            <Ionicons
+              name="ios-restaurant"
+              size={30}
+              color={tabInfo.tintColor}
+            />
+          );
+        },
+      },
+    },
+    Favorites: {
+      screen: Favorites,
+      navigationOptions: {
+        tabBarIcon: (tabInfo) => {
+          return (
+            <Ionicons name="ios-star" size={30} color={tabInfo.tintColor} />
+          );
+        },
+      },
+    },
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: Colors.primary,
+    },
+  }
+);
 
 export default createAppContainer(FavoriteChowNavigator);

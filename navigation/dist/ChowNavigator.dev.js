@@ -46,6 +46,10 @@ var ChowNavigator = (0, _reactNavigationStack.createStackNavigator)({
 var FavoriteChowNavigator = (0, _reactNavigationTabs.createBottomTabNavigator)({
   Meals: ChowNavigator,
   Favorites: _Favorites["default"]
+}, {
+  tabBarOptions: {
+    activeTintColor: _Colors["default"].secondary
+  }
 });
 
 var _default = (0, _reactNavigation.createAppContainer)(FavoriteChowNavigator);
