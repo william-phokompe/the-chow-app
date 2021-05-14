@@ -1,6 +1,6 @@
 import React from "react";
 import { enableScreens } from "react-native-screens";
-import { StyleSheet, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import { CATEGORIES } from "../../data/mock-data";
@@ -45,13 +45,5 @@ Categories.navigationOptions = (navigationData) => {
     ),
   };
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default Categories;
