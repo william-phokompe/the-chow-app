@@ -6,15 +6,17 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createAppContainer } from "react-navigation";
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import { createDrawerNavigator } from 'react-navigation-drawer'
 
 import Categories from "../components/screens/Categories";
 import ChowRecipe from "../components/screens/ChowRecipe";
 import Chow from "../components/screens/Chow";
 import Colors from "../constants/Colors";
 import Favorites from "../components/screens/Favorites";
+import Filters from '../components/screens/Filters'
 
 const defaultNavigationStackOptions = {
-  initialRouteName: "Category",
+  // initialRouteName: "Category",
   defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: Platform.OS === "android" ? Colors.primary : "",
@@ -39,9 +41,9 @@ const ChowNavigator = createStackNavigator(
 const FavNavigator = createStackNavigator({
   MyFavorites: Favorites,
   MealDetail: ChowRecipe
-}, {
-  defaultNavigationOptions: defaultNavigationStackOptions
-})
+}, 
+  defaultNavigationStackOptions
+)
 
 const tabScreenConfig = {
   Meals: {
@@ -79,4 +81,13 @@ const FavoriteChowNavigator =
         },
       });
 
-export default createAppContainer(FavoriteChowNavigator);
+const FilterNavigator = createStackNavigator({
+  FiltersScreen: {screen: Filters}
+}, {defaultNavigationOptions: defaultNavigationStackOptions});
+
+const mainNavigator = createDrawerNavigator({
+  FavoriteChow: FavoriteChowNavigator,
+  Filters: FilterNavigator
+});
+
+export default createAppContainer(mainNavigator);
