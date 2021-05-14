@@ -13,6 +13,16 @@ import Chow from "../components/screens/Chow";
 import Colors from "../constants/Colors";
 import Favorites from "../components/screens/Favorites";
 
+const defaultNavigationStackOptions = {
+  initialRouteName: "Category",
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: Platform.OS === "android" ? Colors.primary : "",
+    },
+    headerTintColor: Platform.OS === "android" ? "white" : Colors.iosPrimary,
+  },
+};
+
 const ChowNavigator = createStackNavigator(
   {
     Category: {
@@ -23,17 +33,15 @@ const ChowNavigator = createStackNavigator(
     },
     Recipe: ChowRecipe,
   },
-  {
-    initialRouteName: "Category",
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Platform.OS === "android" ? Colors.primary : "",
-      },
-      headerTintColor: Platform.OS === "android" ? "white" : Colors.iosPrimary,
-      // headerBackTitle: "A Screen",
-    },
-  }
+    defaultNavigationStackOptions
 );
+
+const FavNavigator = createStackNavigator({
+  MyFavorites: Favorites,
+  MealDetail: ChowRecipe
+}, {
+  defaultNavigationOptions: defaultNavigationStackOptions
+})
 
 const tabScreenConfig = {
   Meals: {
@@ -47,7 +55,7 @@ const tabScreenConfig = {
     },
   },
   Favorites: {
-    screen: Favorites,
+    screen: FavNavigator,
     navigationOptions: {
       tabBarIcon: (tabInfo) => {
         return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />;

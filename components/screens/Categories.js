@@ -26,6 +26,7 @@ const Categories = (props) => {
       data={CATEGORIES}
       renderItem={renderGridItem}
       numColumns={2}
+      style={{width: '100%'}}
     />
   );
 };
