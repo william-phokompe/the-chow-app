@@ -1,30 +1,49 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useCallback } from "react";
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 import HeaderButton from "../HeaderButton";
 import DefaultText from "../DefaultText";
+import { toggleFavorite } from "../../store/actions/mealAction";
 
-const ListItem = props => {
+const ListItem = (props) => {
   return (
     <View style={styles.listItem}>
       <DefaultText>{props.children}</DefaultText>
     </View>
-  )
-}
+  );
+};
 
 const ChowRecipe = (props) => {
-  const availableMeals = useSelector(state => state.meals.meals)
-
+  const availableMeals = useSelector((state) => state.meals.meals);
   const chowId = props.navigation.getParam("chowId");
-
   const selectedChow = availableMeals.find((meal) => meal.id === chowId);
+  const isCurrentFavoriteMeal = useSelector((state) =>
+    state.meals.favoriteMeals.some((meal) => meal.id === chowId)
+  );
+  const dispatch = useDispatch();
 
+  const toggleFavoriteMealHandler = useCallback(
+    (_) => {
+      dispatch(toggleFavorite(chowId));
+    },
+    [dispatch, chowId]
+  );
 
-  // useEffect(_ => {
-  //   props.navigation.setParams({ mealTitle: selectedChow.title });
-  // }, [selectedChow])
+  useEffect(
+    (_) => {
+      props.navigation.setParams({ toggleFav: toggleFavoriteMealHandler });
+    },
+    [toggleFavoriteMealHandler]
+  );
+
+  useEffect(
+    (_) => {
+      props.navigation.setParams({ isFav: isCurrentFavoriteMeal });
+    },
+    [isCurrentFavoriteMeal]
+  );
 
   return (
     <ScrollView>
@@ -48,16 +67,18 @@ const ChowRecipe = (props) => {
 
 ChowRecipe.navigationOptions = (navigationData) => {
   // const mealId = navigationData.navigation.getParam("chowId");
-  const chowTitle = navigationData.navigation.getParam('chowTitle');
+  const chowTitle = navigationData.navigation.getParam("chowTitle");
   // const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  const toggleFavorite = navigationData.navigation.getParam("toggleFav");
+  const isFav = navigationData.navigation.getParam("isFav");
   return {
     headerTitle: chowTitle,
     headerRight: (_) => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Favorite"
-          iconName="ios-star-outline"
-          onPress={(_) => console.log("mark as fave")}
+          iconName={isFav ? "ios-star" : "ios-star-outline"}
+          onPress={toggleFavorite}
         />
       </HeaderButtons>
     ),
@@ -87,10 +108,10 @@ const styles = StyleSheet.create({
   listItem: {
     marginVertical: 10,
     marginHorizontal: 20,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
-    padding: 10
-  }
+    padding: 10,
+  },
 });
 
 export default ChowRecipe;
