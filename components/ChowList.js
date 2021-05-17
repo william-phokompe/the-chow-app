@@ -10,7 +10,7 @@ const ChowList = (props) => {
       <MealItem
         selectedCategory={meals}
         onSelect={(_) => {
-          props.navigation.navigate("Recipe", { chowId: meals.id });
+          props.navigation.navigate("Recipe", { chowId: meals.id, chowTitle: meals.title });
         }}
       />
     );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useSelector } from 'react-redux';
@@ -15,12 +15,17 @@ const ListItem = props => {
 }
 
 const ChowRecipe = (props) => {
-  const availableMeals = useSelector(state.meals.meals)
+  const availableMeals = useSelector(state => state.meals.meals)
 
   const chowId = props.navigation.getParam("chowId");
 
   const selectedChow = availableMeals.find((meal) => meal.id === chowId);
-  console.log(selectedChow.ingredients);
+
+
+  // useEffect(_ => {
+  //   props.navigation.setParams({ mealTitle: selectedChow.title });
+  // }, [selectedChow])
+
   return (
     <ScrollView>
       <Image source={{ uri: selectedChow.imageUrl }} style={styles.image} />
@@ -42,10 +47,11 @@ const ChowRecipe = (props) => {
 };
 
 ChowRecipe.navigationOptions = (navigationData) => {
-  const mealId = navigationData.navigation.getParam("chowId");
-  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  // const mealId = navigationData.navigation.getParam("chowId");
+  const chowTitle = navigationData.navigation.getParam('chowTitle');
+  // const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   return {
-    headerTitle: selectedMeal.title,
+    headerTitle: chowTitle,
     headerRight: (_) => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
