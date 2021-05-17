@@ -58,13 +58,13 @@ var mealsReducer = function mealsReducer() {
       break;
 
     case _mealAction.SET_FILTERS:
-      var appliedFilters = actions.filters;
+      var appliedFilters = action.filters;
       var updatedFilteredMeals = state.meals.filter(function (meal) {
-        if (appliedFilters.glutenFree && !meal.isGluten) {
+        if (appliedFilters.gluten && !meal.isGluten) {
           return false;
         }
 
-        if (appliedFilters.lactoseFree && !meal.isLactoseFree) {
+        if (appliedFilters.lactose && !meal.isLactoseFree) {
           return false;
         }
 

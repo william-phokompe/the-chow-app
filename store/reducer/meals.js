@@ -25,14 +25,14 @@ const mealsReducer = (state = initialState, action) => {
       break;
 
     case SET_FILTERS:
-        const appliedFilters = actions.filters;
+        const appliedFilters = action.filters;
 
         const updatedFilteredMeals = state.meals.filter(meal => {
-            if (appliedFilters.glutenFree && !meal.isGluten) {
+            if (appliedFilters.gluten && !meal.isGluten) {
                 return false;
             }
 
-            if (appliedFilters.lactoseFree && !meal.isLactoseFree) {
+            if (appliedFilters.lactose && !meal.isLactoseFree) {
                 return false;
             }
 
