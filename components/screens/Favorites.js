@@ -1,12 +1,14 @@
 import React from "react";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useSelector } from 'react-redux';
 
 import ChowList from "../ChowList";
-import { MEALS } from "../../data/mock-data";
 import HeaderButton from "../HeaderButton";
 
 const Favorites = (props) => {
-  const favMeals = MEALS.filter((meal) => meal.id === "m1" || meal.id === "m2");
+  const favMeals = useSelector(state => state.meals.favoriteMeals)
+
+  // const favMeals = MEALS.filter((meal) => meal.id === "m1" || meal.id === "m2");
   return <ChowList listData={favMeals} navigation={props.navigation} />;
 };
 

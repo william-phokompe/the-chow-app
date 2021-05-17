@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useSelector } from 'react-redux';
 
-import { MEALS } from "../../data/mock-data";
 import HeaderButton from "../HeaderButton";
 import DefaultText from "../DefaultText";
 
@@ -15,9 +15,11 @@ const ListItem = props => {
 }
 
 const ChowRecipe = (props) => {
+  const availableMeals = useSelector(state.meals.meals)
+
   const chowId = props.navigation.getParam("chowId");
 
-  const selectedChow = MEALS.find((meal) => meal.id === chowId);
+  const selectedChow = availableMeals.find((meal) => meal.id === chowId);
   console.log(selectedChow.ingredients);
   return (
     <ScrollView>
