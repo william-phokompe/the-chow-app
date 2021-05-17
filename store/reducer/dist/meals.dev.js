@@ -57,6 +57,32 @@ var mealsReducer = function mealsReducer() {
 
       break;
 
+    case _mealAction.SET_FILTERS:
+      var appliedFilters = actions.filters;
+      var updatedFilteredMeals = state.meals.filter(function (meal) {
+        if (appliedFilters.glutenFree && !meal.isGluten) {
+          return false;
+        }
+
+        if (appliedFilters.lactoseFree && !meal.isLactoseFree) {
+          return false;
+        }
+
+        if (appliedFilters.vegetarian && !meal.isVegetarian) {
+          return false;
+        }
+
+        if (appliedFilters.vegan && !meal.isVegan) {
+          return false;
+        }
+
+        return true;
+      });
+      return _objectSpread({}, state, {
+        filteredMeals: updatedFilteredMeals
+      });
+      break;
+
     default:
       return state;
   }
