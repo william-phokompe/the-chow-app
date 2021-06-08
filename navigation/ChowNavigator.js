@@ -20,10 +20,10 @@ const defaultNavigationStackOptions = {
     backgroundColor: Platform.OS === "android" ? Colors.primary : "",
   },
   headerTitleStyle: {
-    fontFamily: 'bebas-neue-bold'
+    fontFamily: "bebas-neue-bold",
   },
   headerBackTitleStyle: {
-    fontFamily: 'bebas-neue-reg'
+    fontFamily: "bebas-neue-reg",
   },
   headerTintColor: Platform.OS === "android" ? "white" : Colors.iosPrimary,
 };
@@ -38,7 +38,7 @@ const ChowNavigator = createStackNavigator(
     },
     Recipe: ChowRecipe,
   },
-  {defaultNavigationOptions: defaultNavigationStackOptions}
+  { defaultNavigationOptions: defaultNavigationStackOptions }
 );
 
 const FavNavigator = createStackNavigator(
@@ -47,7 +47,7 @@ const FavNavigator = createStackNavigator(
     MealDetail: ChowRecipe,
   },
   {
-    defaultNavigationOptions: defaultNavigationStackOptions
+    defaultNavigationOptions: defaultNavigationStackOptions,
   }
 );
 
@@ -75,7 +75,7 @@ const tabScreenConfig = {
 const FavoriteChowNavigator =
   Platform.OS === "android"
     ? createMaterialBottomTabNavigator(tabScreenConfig, {
-        activeColor: Colors.primary,
+        activeTintColor: "white",
         shifting: true,
         barStyle: {
           backgroundColor: Colors.primary,
@@ -84,9 +84,9 @@ const FavoriteChowNavigator =
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
           labelStyle: {
-            fontFamily: 'bebas=neue-bold'
+            fontFamily: "open-sans",
           },
-          activeTintColor: Colors.primary,
+          activeTintColor: Colors.secondary,
         },
       });
 
@@ -95,26 +95,31 @@ const FilterNavigator = createStackNavigator(
     FiltersScreen: Filters,
   },
   {
-    defaultNavigationOptions: defaultNavigationStackOptions
+    defaultNavigationOptions: defaultNavigationStackOptions,
   }
 );
 
-const mainNavigator = createDrawerNavigator({
-  FavoriteChow: {screen: FavoriteChowNavigator, navigationOptions: {
-    drawerLabel: 'Favorite Chow'
-  }},
-  Filters: FilterNavigator,
-}, {
-  contentOptions: {
-    activeTintColor: Colors.secondary,
-    itemsContainerStyle: {
-      marginVertical: 100,
-      
+const mainNavigator = createDrawerNavigator(
+  {
+    FavoriteChow: {
+      screen: FavoriteChowNavigator,
+      navigationOptions: {
+        drawerLabel: "Favorite Chow",
+      },
     },
-    labelStyle: {
-      fontFamily: 'bebas-neue-reg',
-    }
+    Filters: FilterNavigator,
+  },
+  {
+    contentOptions: {
+      activeTintColor: Colors.secondary,
+      itemsContainerStyle: {
+        marginVertical: 100,
+      },
+      labelStyle: {
+        fontFamily: "bebas-neue-reg",
+      },
+    },
   }
-});
+);
 
 export default createAppContainer(mainNavigator);

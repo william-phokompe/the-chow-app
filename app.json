@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "the-chow-app",
+    "name": "Chow App",
     "slug": "the-chow-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,9 +24,6 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }
